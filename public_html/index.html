@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Pagina Inicial</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+            <header class="row clearfix">
+                Logomarca
+            </header>
+
+            <nav class="row clearfix">
+                <ul>
+                    <li>
+                        <a href="index.html">Index</a>
+                    </li>
+                    <li>
+                        <a href="home.html">Perfil</a>
+                    </li>
+                    <li>
+                        <a href="listas.html">Listas</a>
+                    </li>
+                    <li>
+                        <a href="produtos.html">Produtos</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="row clearfix">
+                <section class="col-md-6">
+                    <form method="post">
+                        <hr>
+                        <h2>
+                            <strong>Região de Login</strong>
+                        </h2>
+                        <hr>
+                        <!-- ENTRADA DE DADOS -->
+                        <p>
+                            <input type="email" name="email" placeholder="Digite seu email" required>
+                        </p>
+                        <p>
+                            <input type="password" name="password" placeholder="Digite sua senha" required>
+                            <label class="checkbox">
+                                <input type="checkbox" name="lembrete"> Lembrar Senha
+                            </label>
+                        </p>
+                        <!-- ENVIO DE DADOS -->
+                        <p>
+                            <button name="login" type="submit">Entrar</button>
+                        </p>
+                    </form>
+                </section>
+
+                <section class="col-md-6">
+                    <form method="post">
+                        <hr>
+                        <h2>
+                            <strong>Região de Cadastro</strong>
+                        </h2>
+                        <hr>
+                        <!-- ENTRADA DE DADOS -->
+                        <p>
+                            <input type="email" name="email" placeholder="Digite seu email" required>
+                        </p>
+                        <p>
+                            <input type="password" name="password" placeholder="Digite sua senha" required>
+                        </p>
+                        <!-- ENVIO DE DADOS -->
+                        <p>
+                            <button name="login" type="submit">Cadastrar</button>
+                        </p>
+                    </form>
+                </section>
+            </div>
+            
+            <section class="row clearfix">
+                <hr>
+                <h2>
+                    <strong>
+                        Como criar sua própria lista
+                    </strong>
+                </h2>
+                <hr>
+                <div>
+                    <div>
+                        <img src="..." alt="tutorial_1"/>
+                    </div>
+                    <div>
+                        <p>
+                            Texto Explicativo
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+    </body>
+</html>
