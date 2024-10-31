@@ -17,7 +17,7 @@ class Usuario
 
             echo "Usuario cadastrado com sucesso";
             return true;
-        } catch (Exception $ex) {
+        } catch (PDOException $ex) {
             if ($ex->getCode() == 1062) {
                 echo "Usuario já cadastrado";
             } else {

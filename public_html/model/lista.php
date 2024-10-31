@@ -4,12 +4,12 @@ class Lista
 {
     public function addLista($email, $descricao) {
         try {
-            $sql = "INSERT INTO lista VALUES (?, ?, ?)";
+            $sql = "INSERT INTO lista VALUES (:codigo, :descricao, :email)";
             $stmt = Connection::getConnection()->prepare($sql);
 
-            $stmt->bindValue(1, NULL); // ID
-            $stmt->bindValue(2, $descricao);
-            $stmt->bindValue(3, $email);
+            $stmt->bindValue("codigo", NULL); // ID
+            $stmt->bindValue("descricao", $descricao);
+            $stmt->bindValue("email", $email);
 
             $stmt->execute();
             return true;
@@ -69,12 +69,12 @@ class Lista
                 return "Lista não encontrada";
             }
 
-            $sql = "INSERT INTO item VALUES (?, ?, ?)";
+            $sql = "INSERT INTO item VALUES (:codigo, :lista_codigo, :produto_codigo)";
             $stmt = Connection::getConnection()->prepare($sql);
 
-            $stmt->bindValue(1, NULL); // ID
-            $stmt->bindValue(2, $lista['codigo']);
-            $stmt->bindValue(3, $produto);
+            $stmt->bindValue("codigo", NULL); // ID
+            $stmt->bindValue("lista_codigo", $lista['codigo']);
+            $stmt->bindValue("produto_codigo", $produto);
 
             $stmt->execute();
             echo "Produto adicionado com sucesso";
@@ -108,6 +108,58 @@ class Lista
             return true;
         } catch (Exception $e) {
             echo "Erro ao remover item";
+            return false;
+        }
+    }
+
+    public function getItems($lista) {
+        try {
+            $sql = "SELECT item.id AS \"item_id\", item.produto_codigo, produto.nome AS \"produto_nome\" FROM item 
+            INNER JOIN produto ON item.produto_codigo=produto.codigo WHERE item.lista_codigo=?;";
+
+            $stmt = Connection::getConnection()->prepare($sql);
+
+            $stmt->bindValue(1, $lista);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $result = $stmt->fetchAll(PDO::FETCH_BOTH);
+                return $result;
+            }
+
+            echo "Sem itens";
+            return false;
+        } catch (PDOException $e) {
+            echo "Erro ao tentar receber itens<br>\n";
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getItemsUsuario($email) {
+        try {
+            $sql = "SELECT item.id AS \"item_id\", lista.codigo AS \"lista_codigo\", item.produto_codigo, produto.nome AS \"produto_nome\" FROM 
+            (((item INNER JOIN produto ON item.produto_codigo=produto.codigo) INNER JOIN lista ON item.lista_codigo=lista.codigo) 
+            INNER JOIN usuario ON lista.usuario=usuario.email) WHERE usuario.email=?;";
+
+            $stmt = Connection::getConnection()->prepare($sql);
+
+            $stmt->bindValue(1, $email);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $result = $stmt->fetchAll(PDO::FETCH_BOTH);
+                return $result;
+            }
+
+            echo "Sem items e usuarios";
+            return false;
+
+        } catch (Exception $e) {
+            echo "Erro ao tentar receber itens e usuarios<br>\n";
+            echo $e->getMessage();
             return false;
         }
     }

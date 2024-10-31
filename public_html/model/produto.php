@@ -16,14 +16,14 @@ class Produto
 
     public function addProduto($nome, $descricao) {
         try {
-            $sql = "INSERT INTO produto VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO produto VALUES (:codigo, :nome, :descricao, :foto, :buscar)";
             $stmt = Connection::getConnection()->prepare($sql);
 
-            $stmt->bindValue(1, NULL); // CODIGO
-            $stmt->bindValue(2, $nome);
-            $stmt->bindValue(3, $descricao);
-            $stmt->bindValue(4, "foto.jpg");
-            $stmt->bindValue(5, NULL);                        
+            $stmt->bindValue("codigo", NULL);
+            $stmt->bindValue("nome", $nome);
+            $stmt->bindValue("descricao", $descricao);
+            $stmt->bindValue("foto", "foto.jpg");
+            $stmt->bindValue("buscar", NULL);                        
 
             $stmt->execute();
             echo "Produto adicionado";
@@ -34,6 +34,28 @@ class Produto
             } else {
                 echo "Erro ao adicionar produto";
             }
+            return false;
+        }
+    }
+
+    public function removeProduto($nome) {
+        try {
+            $sql = "DELETE FROM produto WHERE nome=?";
+            $stmt = Connection::getConnection()->prepare($sql);
+
+            $stmt->bindValue(1, $nome, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                echo "Produto excluido";
+            } else {
+                echo "Nenhum produto excluido";
+            }
+
+            return true;
+        } catch (Exception $e) {
+            echo $e->getMessage();
             return false;
         }
     }
