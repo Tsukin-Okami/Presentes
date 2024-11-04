@@ -6,6 +6,12 @@
         <meta name="viewport" content="width=device-width">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="bootstrap/css/estilo.css"/>
+        <style>
+            table, td, th {
+                border: 1px solid black;
+                width: 500px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -18,16 +24,16 @@
             <nav class="row clearfix caixa">
                 <ul>
                     <li>
-                        <a href="index.html">Index</a>
+                        <a href="index.php">Index</a>
                     </li>
                     <li>
-                        <a href="home.html">Perfil</a>
+                        <a href="home.php">Perfil</a>
                     </li>
                     <li>
-                        <a href="listas.html">Listas</a>
+                        <a href="listas.php">Listas</a>
                     </li>
                     <li>
-                        <a href="produtos.html">Produtos</a>
+                        <a href="produtos.php">Produtos</a>
                     </li>
                 </ul>
             </nav>
@@ -56,13 +62,22 @@
                 </section>
 
                 <section class="col-md-6">
-                    <h4>Dados de Perfil</h4>
-                    <p>Nome: Usuario</p>
-                    <p>Email: usuario@usuario.com</p>
-                    <p><a href="#">Meu link</a></p>
-                    <p>Data de Criação 12/12/2012</p>
+                    <h4>
+                        Dados de Perfil
+                    </h4>
+                    <p>
+                        Nome: Usuario
+                    </p>
+                    <p>
+                        Email: usuario@usuario.com
+                    </p>
+                    <p>
+                        <a href="#">Meu link</a>
+                    </p>
+                    <p>
+                        Data de Criação 12/12/2012
+                    </p>
                     <br>
-                    
                     <div>
                         <h3>Minha Lista</h3>
                         <p>Nome: Lista de Aniversário</p>

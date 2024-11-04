@@ -18,16 +18,16 @@
             <nav class="row clearfix caixa">
                 <ul>
                     <li>
-                        <a href="index.html">Index</a>
+                        <a href="index.php">Index</a>
                     </li>
                     <li>
-                        <a href="home.html">Perfil</a>
+                        <a href="home.php">Perfil</a>
                     </li>
                     <li>
-                        <a href="listas.html">Listas</a>
+                        <a href="listas.php">Listas</a>
                     </li>
                     <li>
-                        <a href="produtos.html">Produtos</a>
+                        <a href="produtos.php">Produtos</a>
                     </li>
                 </ul>
             </nav>

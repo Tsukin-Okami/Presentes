@@ -15,13 +15,14 @@ class Usuario
             $stmt->bindValue(5, 'jpg');
             $stmt->execute();
 
-            echo "Usuario cadastrado com sucesso";
+            echo "Usuario cadastrado com sucesso" . "<br>";
             return true;
         } catch (PDOException $ex) {
             if ($ex->getCode() == 1062) {
-                echo "Usuario já cadastrado";
+                echo "Usuario já cadastrado" . "<br>";
             } else {
-                echo "Erro ao cadastrar usuário";
+                echo "Erro ao cadastrar usuário" . "<br>";
+                echo $ex->getMessage();
             }
             return false;
         }
@@ -39,14 +40,15 @@ class Usuario
             $result = $stmt->rowCount();
 
             if ($stmt->rowCount() > 0) {
-                echo "Usuario Validado";
+                echo "Usuario Validado" . "<br>";
             } else {
-                echo "Usuario não existe";
+                echo "Usuario não existe" . "<br>";
             }
             return $result;
             
-        } catch (Exception $ex) {
-            echo "Usuario não validado";
+        } catch (PDOException $ex) {
+            echo "Usuario não validado" . "<br>";
+            echo $ex->getMessage();
             return false;
         }
     }
@@ -65,7 +67,7 @@ class Usuario
                 return $result;
             }
 
-            echo "sem dados";
+            echo "Sem dados" . "<br>";
             return false;
         } catch (Exception $ex) {
             echo $ex->getMessage();
@@ -89,7 +91,7 @@ class Usuario
                 return $result;
             }
 
-            echo "sem usuarios";
+            echo "Sem usuarios" . "<br>";
             return false;
         } catch (Exception $exception) {
             echo $exception->getMessage();
