@@ -28,7 +28,7 @@
             $c->produtos();
 
             if ($c->mensagemProduto) echo $c->mensagemProduto . "<br>";
-            if ($c->listaProduto) print_r($c->listaProduto);
+            //if ($c->listaProduto) echo ($c->listaProduto);
         ?>
         </p>
         <div class="container">
@@ -80,6 +80,9 @@
                     <button class="btn btn-default btn lg" name="add">Adicionar a lista</button>
                 </form>
             </article>
+            <?php
+                if ($c->listaProduto) print_r($c->listaProduto);
+            ?>
         </div>
         
     </body>

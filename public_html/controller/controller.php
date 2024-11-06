@@ -4,7 +4,7 @@ class Controller
 {
     public bool|string $cadastroIndex = false;
     public bool|string $loginIndex = false;
-    public bool|array $listaProduto = false;
+    public $listaProduto = false;
     public bool|string $mensagemProduto = false;
 
     public function index() {
@@ -37,6 +37,12 @@ class Controller
     public function produtos() {
         $p = new Produto;
         $this->listaProduto = $p->recebeProdutos();
+
+        include "createhtml.php";
+
+        $createhtml = new CreateHtml;
+        $this->listaProduto = $createhtml->CreateList($this->listaProduto);
+
 
         if (isset($_POST['add'])) {
             $codigo = $_POST['codigo'];
