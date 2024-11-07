@@ -4,8 +4,8 @@
         <title>Pagina de Produtos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="bootstrap/css/estilo.css"/>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
         <style>
             .console {
                 background: blue; 
@@ -31,15 +31,12 @@
             //if ($c->listaProduto) echo ($c->listaProduto);
         ?>
         </p>
-        <div class="container">
-            <header class="row clearfix">
-                <div class="col-md-6">
-                    <img src="..." alt="Logomarca">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Logomarca</a>
                 </div>
-            </header>
-
-            <nav class="row clearfix caixa">
-                <ul>
+                <ul class="nav navbar-nav">
                     <li>
                         <a href="index.php">Index</a>
                     </li>
@@ -49,12 +46,13 @@
                     <li>
                         <a href="listas.php">Listas</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="produtos.php">Produtos</a>
                     </li>
                 </ul>
-            </nav>
-
+            </div>
+        </nav>
+        <div class="container">
             <div>
                 <hr>
                 <h2>
@@ -63,26 +61,25 @@
                 <hr>
             </div>
             
-            <article class="col-md-6">
-                <img src="./bootstrap/img/produtos/pc.jpg" alt="foto" width="350" height="350">
-                <h2>
-                    Titulo do Produto
-                </h2>
-                <p>
-                    Descrição do Produto
-                </p>
-                <p>
-                    <a href="#">Link do Produto</a>
-                </p>
-
-                <form method="post">
-                    <input type="hidden" name="codigo" value="|">
-                    <button class="btn btn-default btn lg" name="add">Adicionar a lista</button>
-                </form>
-            </article>
-            <?php
-                if ($c->listaProduto) print_r($c->listaProduto);
-            ?>
+            <section class="row clearfix caixa centralizada">
+                <article class="col-md-6">
+                    <img src="./bootstrap/img/produtos/pc.jpg" alt="foto" class="img responsive center-1" width="350" height="350">
+                    <h2>
+                        Titulo do Produto
+                    </h2>
+                    <p>
+                        Descrição do Produto
+                    </p>
+                    <p>
+                        <a href="#">Link do Produto</a>
+                    </p>
+    
+                    <form method="post">
+                        <input type="hidden" name="codigo" value="|">
+                        <button class="btn btn-primary btn-lg" name="add">Adicionar a lista</button>
+                    </form>
+                </article>
+            </section>
         </div>
         
     </body>

@@ -38,12 +38,6 @@ class Controller
         $p = new Produto;
         $this->listaProduto = $p->recebeProdutos();
 
-        include "createhtml.php";
-
-        $createhtml = new CreateHtml;
-        $this->listaProduto = $createhtml->CreateList($this->listaProduto);
-
-
         if (isset($_POST['add'])) {
             $codigo = $_POST['codigo'];
 
